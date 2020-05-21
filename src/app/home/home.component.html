@@ -1,5 +1,17 @@
 <h1>Show Difference</h1>
 
+<div fxHide.lt-md>
+  <mat-form-field>
+    <mat-label>Language:</mat-label>
+    <mat-select
+    (selectionChange)="changeLanguage($event.value)">
+      <mat-option *ngFor="let lang of languages" [value]="lang">{{
+        lang
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <div
   fxLayout="row wrap"
   fxLayout.lt-md="column"
@@ -18,12 +30,13 @@
     fxFlex.xs="calc(100% - 16px)"
   ></ngx-monaco-editor>
   <textarea
-    style="height: 20vh;resize: none;"
+    style="height: 20vh; resize: none;"
     fxHide.gt-sm
     class="differ-editor"
     [(ngModel)]="originalText"
     (keyup)="compare()"
     (paste)="compare()"
+    (change)="compare()"
   ></textarea>
 
   <!-- ------------------------------------------------------------------------------  -->
@@ -40,17 +53,19 @@
     fxFlex.xs="calc(100% - 16px)"
   ></ngx-monaco-editor>
   <textarea
-    style="height: 20vh;resize: none"
+    style="height: 20vh; resize: none;"
     fxHide.gt-sm
     class="differ-editor"
     [(ngModel)]="comparisonText"
     (keyup)="compare()"
     (paste)="compare()"
+    (change)="compare()"
   ></textarea>
 </div>
 
 <label>
-  <input type="checkbox" (change)="toggleInline($event.target.checked)"> Inline Diff
+  <input type="checkbox" (change)="toggleInline($event.target.checked)" />
+  Inline Diff
 </label>
 <ngx-monaco-diff-editor
   class="differ-editor"

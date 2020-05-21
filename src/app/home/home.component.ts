@@ -11,24 +11,73 @@ export class HomeComponent implements OnInit {
   originalText: string;
   comparisonText: string;
 
+  languages = [
+    "bat",
+    "c",
+    "coffeescript",
+    "cpp",
+    "csharp",
+    "csp",
+    "css",
+    "dockerfile",
+    "fsharp",
+    "go",
+    "handlebars",
+    "html",
+    "ini",
+    "java",
+    "javascript",
+    "json",
+    "less",
+    "lua",
+    "markdown",
+    "msdax",
+    "mysql",
+    "objective-c",
+    "pgsql",
+    "php",
+    "plaintext",
+    "postiats",
+    "powershell",
+    "pug",
+    "python",
+    "r",
+    "razor",
+    "redis",
+    "redshift",
+    "ruby",
+    "rust",
+    "sb",
+    "scss",
+    "sol",
+    "sql",
+    "st",
+    "swift",
+    "typescript",
+    "vb",
+    "xml",
+    "yaml"
+  ];
+
   options: any = {
     theme: "vs",
     readOnly: false,
   };
   originalModel: DiffEditorModel = {
     code: " ",
-    language: "text/plain",
+    language: "plaintext",
   };
 
   modifiedModel: DiffEditorModel = {
     code: " ",
-    language: "text/plain",
+    language: "plaintext",
   };
   constructor(private loadingService: LoadingService) {}
 
   ngOnInit = () => this.loadingService.show();
   loaded = () => this.loadingService.hide();
   toggleInline = (checked) => this.options = {...this.options, renderSideBySide: !checked};
+  changeLanguage = (language) => this.options = {...this.options, language};
 
   public compare() {
     this.originalModel = {...this.originalModel, code: this.originalText};
