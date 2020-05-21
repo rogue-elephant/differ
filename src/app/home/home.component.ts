@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   originalText: string;
   comparisonText: string;
 
-  options = {
+  options: any = {
     theme: "vs",
     readOnly: false,
   };
@@ -26,12 +26,9 @@ export class HomeComponent implements OnInit {
   };
   constructor(private loadingService: LoadingService) {}
 
-  ngOnInit(): void {
-    this.loadingService.show();
-  }
-  loaded(): void {
-    this.loadingService.hide();
-  }
+  ngOnInit = () => this.loadingService.show();
+  loaded = () => this.loadingService.hide();
+  toggleInline = (checked) => this.options = {...this.options, renderSideBySide: !checked};
 
   public compare() {
     this.originalModel = {...this.originalModel, code: this.originalText};

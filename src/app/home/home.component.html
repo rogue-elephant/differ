@@ -1,7 +1,13 @@
 <h1>Show Difference</h1>
 
-<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="16px">
+<div
+  fxLayout="row wrap"
+  fxLayout.lt-md="column"
+  fxLayoutGap="16px"
+  style="min-height: 20vh; margin-bottom: 12px;"
+>
   <ngx-monaco-editor
+    fxHide.lt-md
     class="differ-editor"
     [options]="options"
     [(ngModel)]="originalText"
@@ -11,7 +17,18 @@
     fxFlex.lt-lg="0 1 calc(50% - 16px)"
     fxFlex.xs="calc(100% - 16px)"
   ></ngx-monaco-editor>
+  <textarea
+    style="height: 20vh;resize: none;"
+    fxHide.gt-sm
+    class="differ-editor"
+    [(ngModel)]="originalText"
+    (keyup)="compare()"
+    (paste)="compare()"
+  ></textarea>
+
+  <!-- ------------------------------------------------------------------------------  -->
   <ngx-monaco-editor
+    fxHide.lt-md
     class="differ-editor"
     [options]="options"
     [(ngModel)]="comparisonText"
@@ -22,8 +39,19 @@
     fxFlex.lt-lg="0 1 calc(50% - 16px)"
     fxFlex.xs="calc(100% - 16px)"
   ></ngx-monaco-editor>
+  <textarea
+    style="height: 20vh;resize: none"
+    fxHide.gt-sm
+    class="differ-editor"
+    [(ngModel)]="comparisonText"
+    (keyup)="compare()"
+    (paste)="compare()"
+  ></textarea>
 </div>
 
+<label>
+  <input type="checkbox" (change)="toggleInline($event.target.checked)"> Inline Diff
+</label>
 <ngx-monaco-diff-editor
   class="differ-editor"
   [options]="options"

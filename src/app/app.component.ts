@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title = 'differ';
+  public title = 'DIFFER';
   public sideNavOpen = false;
 
   public toggleSideNav = () => this.sideNavOpen = !this.sideNavOpen;

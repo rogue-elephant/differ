@@ -9,6 +9,23 @@ This project was scaffolded using [chapi-chapi/generator-angular](https://github
 
 Show diffs between two items
 
+## Deploying to gh-pages
+First install [angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages).
+
+Build the app:
+
+``` shell
+ng build --prod --base-href "https://rogue-elephant.github.io/differ/"
+```
+
+Then Run :
+
+```shell
+ngh
+```
+
+bish bash done!
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
 ## Development server
