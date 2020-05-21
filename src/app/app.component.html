@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" id="app-toolbar">
+  <span id="app-title" [innerText]="title" routerLink='/'></span>
+
+  <div id="app-links" fxHide.lt-md>
+    <a routerLink="/" [routerLinkActive]="'active'">Home</a>
+  </div>
+
+  <button mat-button fxHide="false" fxHide.gt-sm id="nav-hamburger" (click)="toggleSideNav()">
+    <mat-icon>menu</mat-icon>
+   </button>
+</mat-toolbar>
+
+<mat-sidenav-container id="app-page-container">
+  <mat-sidenav id="app-side-nav" #drawer mode="side" [(opened)]="sideNavOpen" role="navigation" fxHide.gt-sm>
+    <mat-nav-list (click)="toggleSideNav()">
+      <a mat-list-item [routerLinkActive]="'active'" routerLink='/'>Home</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-loader></app-loader>
+    <div id="app-main">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

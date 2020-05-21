@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+$default-spacing: 12px;
+$primary-color: mat-color(mat-palette($mat-deep-purple));
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  h1 {
+    color: $primary-color;
+  }
+
+  * {
+    outline: none;
+  }
+}
+
+.notification-success {
+  background: #008866;
+}
+.notification-error {
+  background: #aa0033;
+}
+

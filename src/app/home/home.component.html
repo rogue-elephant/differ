@@ -1,0 +1,32 @@
+<h1>Show Difference</h1>
+
+<div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="16px">
+  <ngx-monaco-editor
+    class="differ-editor"
+    [options]="options"
+    [(ngModel)]="originalText"
+    (keyup)="compare()"
+    (paste)="compare()"
+    fxFlex.gt-md="0 1 calc(50% - 16px)"
+    fxFlex.lt-lg="0 1 calc(50% - 16px)"
+    fxFlex.xs="calc(100% - 16px)"
+  ></ngx-monaco-editor>
+  <ngx-monaco-editor
+    class="differ-editor"
+    [options]="options"
+    [(ngModel)]="comparisonText"
+    (keyup)="compare()"
+    (paste)="compare()"
+    (onInit)="loaded()"
+    fxFlex.gt-md="0 1 calc(50% - 16px)"
+    fxFlex.lt-lg="0 1 calc(50% - 16px)"
+    fxFlex.xs="calc(100% - 16px)"
+  ></ngx-monaco-editor>
+</div>
+
+<ngx-monaco-diff-editor
+  class="differ-editor"
+  [options]="options"
+  [originalModel]="originalModel"
+  [modifiedModel]="modifiedModel"
+></ngx-monaco-diff-editor>
