@@ -1,5 +1,8 @@
 # differ
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/rogue-elephant/differ) 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/rogue-elephant/differ)
+
+[![Live Site](https://img.shields.io/badge/Click%20Me-%20Open%20on%20GitHub%20Pages-green?style=for-the-badge&logo=github)](https://rogue-elephant.github.io/differ/)
+
 ![Preview](./preview.gif)
 
 This project was scaffolded using [chapi-chapi/generator-angular](https://github.com/chapi-chapi/generator-angular)
