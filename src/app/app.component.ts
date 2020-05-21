@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeService } from './shared/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,10 @@ export class AppComponent {
   public title = 'DIFFER';
   public sideNavOpen = false;
 
+  constructor(private themeService: ThemeService) {
+  }
+
   public toggleSideNav = () => this.sideNavOpen = !this.sideNavOpen;
+
+  public toggleTheme = () => this.themeService.toggleTheme();
 }

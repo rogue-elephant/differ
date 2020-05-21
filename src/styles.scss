@@ -2,12 +2,22 @@
 $default-spacing: 12px;
 $primary-color: mat-color(mat-palette($mat-deep-purple));
 
+:root {
+  --background-color: #fafafa;
+  --font-color: #000;
+  --primary-color: $primary-color;
+}
+
 html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  h1 {
-    color: $primary-color;
+  .mat-select-value {
+    color: var(--font-color);
+  }
+
+  h1, mat-label {
+    color: var(--primary-color);
   }
 
   * {

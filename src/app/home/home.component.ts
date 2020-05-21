@@ -1,13 +1,17 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { DiffEditorModel } from "ngx-monaco-editor";
-import { LoadingService } from '../shared/services/loading.service';
+import { LoadingService } from "../shared/services/loading.service";
+import { ThemeService } from "../shared/services/theme.service";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  destroy$: Subject<boolean> = new Subject<boolean>();
   originalText: string;
   comparisonText: string;
 
@@ -56,11 +60,11 @@ export class HomeComponent implements OnInit {
     "typescript",
     "vb",
     "xml",
-    "yaml"
+    "yaml",
   ];
 
   options: any = {
-    theme: "vs",
+    theme: this.themeService.isDarkTheme ? "vs-dark" : "vs",
     readOnly: false,
   };
   originalModel: DiffEditorModel = {
@@ -72,15 +76,31 @@ export class HomeComponent implements OnInit {
     code: " ",
     language: "plaintext",
   };
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+    private loadingService: LoadingService,
+    private themeService: ThemeService
+  ) {}
 
-  ngOnInit = () => this.loadingService.show();
+  ngOnInit() {
+    this.loadingService.show();
+    this.themeService.isDarkTheme$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+        (isDarkTheme: boolean) =>
+          (this.options = {...this.options, theme: isDarkTheme ? "vs-dark" : "vs"})
+      );
+  }
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+  }
   loaded = () => this.loadingService.hide();
-  toggleInline = (checked) => this.options = {...this.options, renderSideBySide: !checked};
-  changeLanguage = (language) => this.options = {...this.options, language};
+  toggleInline = (checked) =>
+    (this.options = { ...this.options, renderSideBySide: !checked });
+  changeLanguage = (language) => (this.options = { ...this.options, language });
 
   public compare() {
-    this.originalModel = {...this.originalModel, code: this.originalText};
-    this.modifiedModel = {...this.originalModel, code: this.comparisonText};
+    this.originalModel = { ...this.originalModel, code: this.originalText };
+    this.modifiedModel = { ...this.originalModel, code: this.comparisonText };
   }
 }

@@ -26,6 +26,7 @@ import { MonacoEditorModule } from "ngx-monaco-editor";
 
 import { LoaderComponent } from "./shared/loader/loader.component";
 import { LoadingService } from "./shared/services/loading.service";
+import { ThemeService } from "./shared/services/theme.service";
 import { NotificationsService } from "./shared/services/notifications.service";
 import { HomeComponent } from "./home/home.component";
 
@@ -56,6 +57,7 @@ import { HomeComponent } from "./home/home.component";
   providers: [
     LoadingService,
     NotificationsService,
+    ThemeService,
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 4500 } },
   ],
   bootstrap: [AppComponent],
