@@ -52,17 +52,14 @@
 
 #app-side-nav {
   width: 100vw;
+  background: var(--background-color);
+  padding-top: 52px;
 
   a {
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #c7c7c7;
-  }
-
-  .mat-drawer-inner-container {
-    background: var(--background-color);
     color: var(--font-color);
-    padding-top: 52px;
   }
 }
 
