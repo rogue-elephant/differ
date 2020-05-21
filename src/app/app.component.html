@@ -1,10 +1,11 @@
 <div id="nav-bar">
   <mat-toolbar color="primary" id="app-toolbar">
     <mat-icon>sync_alt</mat-icon>
-    <span id="app-title" [innerText]="title" routerLink="/"></span>
+    <span id="app-title" [innerText]="title" routerLink="/text"></span>
 
     <div id="app-links" fxHide.lt-md>
-      <a routerLink="/" [routerLinkActive]="'active'">Home</a>
+      <a routerLink="/text" [routerLinkActive]="'active'">Text/Code</a>
+      <a routerLink="/image" [routerLinkActive]="'active'">Image</a>
     </div>
 
     <div class="nav-buttons">
@@ -51,7 +52,8 @@
     fxHide.gt-sm
   >
     <mat-nav-list (click)="toggleSideNav()">
-      <a mat-list-item [routerLinkActive]="'active'" routerLink="/">Home</a>
+      <a mat-list-item [routerLinkActive]="'active'" routerLink="/text">Text/Code</a>
+      <a routerLink="/image" [routerLinkActive]="'active'">Image</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

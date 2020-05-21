@@ -1,0 +1,37 @@
+<button
+  mat-raised-button
+  color="primary"
+  (click)="compare()"
+  style="margin-bottom: 12px;"
+>
+  compare
+</button>
+<div
+  fxLayout="row wrap"
+  fxLayout.lt-md="column"
+  fxLayoutGap="16px"
+  style="min-height: 20vh; margin-bottom: 12px;"
+>
+  <div
+    fxFlex.gt-md="0 1 calc(50% - 16px)"
+    fxFlex.lt-lg="0 1 calc(50% - 16px)"
+    fxFlex.xs="calc(100% - 16px)"
+  >
+    <img id="originalImage" src="assets/img1.png" />
+  </div>
+
+  <div
+    fxFlex.gt-md="0 1 calc(50% - 16px)"
+    fxFlex.lt-lg="0 1 calc(50% - 16px)"
+    fxFlex.xs="calc(100% - 16px)"
+  >
+    <img
+      id="comparisonImage"
+      src="assets/img2.png"
+      fxFlex.gt-md="0 1 calc(50% - 16px)"
+      fxFlex.lt-lg="0 1 calc(50% - 16px)"
+      fxFlex.xs="calc(100% - 16px)"
+    />
+  </div>
+</div>
+<div id="result"></div>

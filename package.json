@@ -30,6 +30,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "ngx-monaco-editor": "^9.0.0",
     "ngx-timeago": "^1.0.4",
+    "pixelmatch": "^5.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

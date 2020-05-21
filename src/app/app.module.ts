@@ -28,10 +28,11 @@ import { LoaderComponent } from "./shared/loader/loader.component";
 import { LoadingService } from "./shared/services/loading.service";
 import { ThemeService } from "./shared/services/theme.service";
 import { NotificationsService } from "./shared/services/notifications.service";
-import { HomeComponent } from "./home/home.component";
+import { TextDiffComponent } from "./text-diff/text-diff.component";
+import { ImageDiffComponent } from './image-diff/image-diff.component';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent, HomeComponent],
+  declarations: [AppComponent, LoaderComponent, TextDiffComponent, ImageDiffComponent],
   imports: [
     BrowserModule,
     RouterModule,

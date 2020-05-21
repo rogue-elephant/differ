@@ -6,11 +6,11 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"],
+  selector: "differ-text-diff",
+  templateUrl: "./text-diff.component.html",
+  styleUrls: ["./text-diff.component.scss"],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class TextDiffComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   originalText: string;
   comparisonText: string;

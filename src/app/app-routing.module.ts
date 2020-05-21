@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { TextDiffComponent } from './text-diff/text-diff.component';
+import { ImageDiffComponent } from './image-diff/image-diff.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    component: HomeComponent
+    component: TextDiffComponent
+  },
+  {
+    path: 'text',
+    redirectTo: ''
+  },
+  {
+    path: 'image',
+    component: ImageDiffComponent
   }
 ];
 
