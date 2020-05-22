@@ -7,7 +7,7 @@
   compare
 </button>
 <div
-  fxLayout="row wrap"
+  fxLayout="row"
   fxLayout.lt-md="column"
   fxLayoutGap="16px"
   style="min-height: 20vh; margin-bottom: 12px;"
@@ -17,7 +17,12 @@
     fxFlex.lt-lg="0 1 calc(50% - 16px)"
     fxFlex.xs="calc(100% - 16px)"
   >
-    <img id="originalImage" src="assets/img1.png" />
+    <button mat-raised-button color="primary" (click)="clickFileSelector(1)">
+      <mat-icon>camera_alt</mat-icon>
+    </button>
+    <div class="differ-image-container">
+      <img id="originalImage" />
+    </div>
   </div>
 
   <div
@@ -25,13 +30,30 @@
     fxFlex.lt-lg="0 1 calc(50% - 16px)"
     fxFlex.xs="calc(100% - 16px)"
   >
-    <img
-      id="comparisonImage"
-      src="assets/img2.png"
-      fxFlex.gt-md="0 1 calc(50% - 16px)"
-      fxFlex.lt-lg="0 1 calc(50% - 16px)"
-      fxFlex.xs="calc(100% - 16px)"
-    />
+    <button mat-raised-button color="primary" (click)="clickFileSelector(2)">
+      <mat-icon>camera_alt</mat-icon>
+    </button>
+    <div class="differ-image-container">
+      <img id="comparisonImage" />
+    </div>
   </div>
 </div>
-<div id="result"></div>
+
+<div id="diff-result" class="differ-image-container">
+  <div id="diff-result-canvas-container" class="canvas-container"></div>
+</div>
+
+<input
+  #fileSelector1
+  (change)="onFileChange($event, 'originalImage')"
+  accept="image/*"
+  style="display: none;"
+  type="file"
+/>
+<input
+  #fileSelector2
+  (change)="onFileChange($event, 'comparisonImage')"
+  accept="image/*"
+  style="display: none;"
+  type="file"
+/>

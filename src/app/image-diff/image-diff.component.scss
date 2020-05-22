@@ -1,0 +1,20 @@
+.differ-image-container {
+  height: 38vh;
+  width: 42vw;
+  margin: 0 auto;
+  border: 1px solid #c0c0c0;
+
+  img, .canvas-container {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    object-fit: cover
+  }
+}
+
+#diff-result {
+  margin-top: 12px;
+}

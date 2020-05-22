@@ -14,6 +14,9 @@ import * as pixelmatch from "pixelmatch";
   styleUrls: ["./image-diff.component.scss"],
 })
 export class ImageDiffComponent implements OnInit, AfterViewInit {
+  @ViewChild("fileSelector1") fileInput1: ElementRef;
+  @ViewChild("fileSelector2") fileInput2: ElementRef;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -56,8 +59,8 @@ export class ImageDiffComponent implements OnInit, AfterViewInit {
     this.drawDiff(diffImage);
   }
 
-  convertImageToCanvas(imageID) {
-    const image: any = document.getElementById(imageID);
+  convertImageToCanvas(imageId) {
+    const image: any = document.getElementById(imageId);
     const canvas = document.createElement("canvas");
     [canvas.width, canvas.height] = [image.width, image.height];
     canvas.getContext("2d").drawImage(image, 0, 0);
@@ -69,7 +72,17 @@ export class ImageDiffComponent implements OnInit, AfterViewInit {
     [canvas.width, canvas.height] = [diffImage.width, diffImage.height];
     const ctx = canvas.getContext("2d");
     ctx.putImageData(diffImage, 0, 0);
-    const result = document.getElementById("result");
+    const result = document.getElementById("diff-result-canvas-container");
     result.appendChild(ctx.canvas);
+  }
+
+  clickFileSelector(id) {
+    (id === 1 ? this.fileInput1 : this.fileInput2).nativeElement.click();
+  }
+
+  onFileChange(event, imageId) {
+    const selectedImage = event.target.files[0];
+    const image: any = document.getElementById(imageId);
+    image.src = URL.createObjectURL(selectedImage);
   }
 }
